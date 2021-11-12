@@ -1,6 +1,6 @@
-name: haskell-graphical
+name: countdown-bar
 version: 0.0.1
-github: "githubuser/haskell-graphical"
+github: "AndreiUlmeyda/countdown-bar"
 license: MIT
 author: "Adrian Schurz"
 maintainer: "schurz.adrian@gmail.com"
@@ -16,18 +16,17 @@ extra-source-files:
 # To avoid duplicated efforts in documentation and dealing with the
 # complications of embedding Haddock markup inside cabal files, it is
 # common to point users to the README.md file.
-description: Please see the README on GitHub at <https://github.com/githubuser/haskell-graphical#readme>
+description: Please see the README on GitHub at <https://github.com/AndreiUlmeyda/countdown-bar#readme>
 
 dependencies:
   - base >= 4.7 && < 5
   - gloss
-  - random >=1.2
 
 library:
   source-dirs: src
 
 executables:
-  haskell-graphical-exe:
+  countdown-bar:
     main: Main.hs
     source-dirs: app
     ghc-options:
@@ -35,10 +34,10 @@ executables:
       - -rtsopts
       - -with-rtsopts=-N
     dependencies:
-      - haskell-graphical
+      - countdown-bar
 
 tests:
-  haskell-graphical-test:
+  countdown-bar-test:
     main: Spec.hs
     source-dirs: test
     ghc-options:
@@ -46,4 +45,4 @@ tests:
       - -rtsopts
       - -with-rtsopts=-N
     dependencies:
-      - haskell-graphical
+      - countdown-bar
