@@ -1,0 +1,10 @@
+cradle:
+  multi:
+    - path: "./"
+      config:
+        cradle:
+          stack:
+            - path: "./app/Main.hs"
+            - path: "./test/Spec.hs"
+            - path: "./src/Logic.hs"
+            - path: "./src/Config.hs"
