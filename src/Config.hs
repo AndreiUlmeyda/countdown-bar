@@ -1,12 +1,15 @@
-module Config ( frameRate
-              , barColor
-              , backgroundColor
-              , tomatoWorkIntervalInSeconds
-              , windowTitle
-              , windowSize
-              , windowPosition
-              , halfMonitorWidthInPixels
-              , halfBarHeightInPixels ) where
+module Config
+  ( frameRate,
+    barColor,
+    backgroundColor,
+    tomatoWorkIntervalInSeconds,
+    windowTitle,
+    windowSize,
+    windowPosition,
+    halfMonitorWidthInPixels,
+    halfBarHeightInPixels,
+  )
+where
 
 import Graphics.Gloss.Data.Color (Color, makeColor)
 
