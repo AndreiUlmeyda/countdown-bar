@@ -11,6 +11,7 @@ One solution using the wayland compositor [Sway](https://github.com/swaywm/sway)
 Clone this repository, then configure a sway hotkey to start the timer:
 
 ```git clone git@github.com:AndreiUlmeyda/countdown-bar.git```
+
 ...and inside of your sway config
 
 ```bindsym $mod+t exec '<your-directory>/countdown-bar/bin/countdown-bar'```
