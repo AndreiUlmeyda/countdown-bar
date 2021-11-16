@@ -3,7 +3,7 @@ module Config
   ( frameRate,
     barColor,
     backgroundColor,
-    tomatoWorkIntervalInSeconds,
+    countdownLengthInSeconds,
     windowTitle,
     windowSize,
     windowPosition,
@@ -35,17 +35,17 @@ green = makeColor 0.0 0.6 0.0 noTransparency -- green
 noTransparency :: Float
 noTransparency = 1
 
-tomatoWorkIntervalInMinutes :: Float
-tomatoWorkIntervalInMinutes = 25
+countdownLengthInMinutes :: Float
+countdownLengthInMinutes = 25
 
 -- | The number of seconds it will take the bar to shrink to zero size and the program to exit.
-tomatoWorkIntervalInSeconds :: Float
-tomatoWorkIntervalInSeconds = tomatoWorkIntervalInMinutes * 60
+countdownLengthInSeconds :: Float
+countdownLengthInSeconds = countdownLengthInMinutes * 60
 
 -- |  The title of the application window. Certain window managers / compositors can be configured to set the window
 --    position automatically depending on the window title.
 windowTitle :: String
-windowTitle = "tomato"
+windowTitle = "countdown-bar"
 
 -- | The size of the application window.
 windowSize :: (Int, Int)

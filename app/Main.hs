@@ -6,7 +6,7 @@ import Config
     frameRate,
     halfBarHeightInPixels,
     halfMonitorWidthInPixels,
-    tomatoWorkIntervalInSeconds,
+    countdownLengthInSeconds,
     windowPosition,
     windowSize,
     windowTitle,
@@ -36,7 +36,7 @@ render runningTime = color barColor $ polygon [upperLeftCorner, lowerLeftCorner,
     lowerRightCorner = (rightBoundaryXPosition, - halfBarHeightInPixels)
 
 pixelsPerSecond :: Float
-pixelsPerSecond = halfMonitorWidthInPixels / tomatoWorkIntervalInSeconds
+pixelsPerSecond = halfMonitorWidthInPixels / countdownLengthInSeconds
 
 handleInputEvents :: Event -> RunningTime -> RunningTime
 handleInputEvents _ runningTime = runningTime -- ignore all events
@@ -46,5 +46,5 @@ initialRunningTime = 0
 
 updateRunningTimeOrExit :: RunningTime -> TimeDelta -> RunningTime
 updateRunningTimeOrExit deltaTime runningTime
-  | runningTime > tomatoWorkIntervalInSeconds = error "not really an error, please yell at the dev to exit properly"
+  | runningTime > countdownLengthInSeconds = error "not really an error, please yell at the dev to exit properly"
   | otherwise = runningTime + deltaTime
