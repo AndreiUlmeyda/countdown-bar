@@ -19,7 +19,7 @@ Clone this repository, then configure a sway hotkey to start the timer:
 At this point the window will be spawned in some random place depending on your sway configuration.
 You will likely need to position it to your liking by specifying a rule inside of your sway config like
 
-```for_window [title="^countdown-bar$"] floating enable, resize set 1900 5, move position -10 -10, border none, sticky enable```
+```for_window [title="^countdown$"] floating enable, resize set 1900 5, move position -10 -10, border none, sticky enable```
 
 Spice things up a bit by ripping silly beep boop noises from the game Alien: Isolation or your favourite
 website collecting Star Trek samples and play them at the start and/or end of the timer.

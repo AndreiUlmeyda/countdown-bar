@@ -45,7 +45,7 @@ countdownLengthInSeconds = countdownLengthInMinutes * 60
 -- |  The title of the application window. Certain window managers / compositors can be configured to set the window
 --    position automatically depending on the window title.
 windowTitle :: String
-windowTitle = "countdown-bar"
+windowTitle = "countdown"
 
 -- | The size of the application window.
 windowSize :: (Int, Int)
