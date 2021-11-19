@@ -11,7 +11,7 @@ import Config
     windowSize,
     windowTitle,
   )
-import Graphics.Gloss.Data.Picture (Picture, color, polygon)
+import Graphics.Gloss.Data.Picture (Picture (Pictures), color, polygon, scale)
 import Graphics.Gloss.Interface.Pure.Game (Display (InWindow), Event, play)
 
 main :: IO ()
@@ -24,16 +24,29 @@ type RunningTime = Float
 
 type TimeDelta = Float
 
+-- | render a bar ticking down towards the middle by defining the right half of the bar depending on
+-- the running time, then defining a second half by mirroring about the y-axis
 render :: RunningTime -> Picture
-render runningTime = color barColor $ polygon [upperLeftCorner, lowerLeftCorner, upperRightCorner, lowerRightCorner]
+render runningTime = Pictures [rightHalfBar, leftHalfBar]
   where
-    progressInPixels = runningTime * pixelsPerSecond
+    rightHalfBar = color barColor $ fillingRectangle rightBoundaryXPosition
+    leftHalfBar = scale flipYPosition leaveXPosition rightHalfBar
     rightBoundaryXPosition = max 0 (halfMonitorWidthInPixels - progressInPixels)
-    leftBoundaryXPosition = - rightBoundaryXPosition
-    upperLeftCorner = (leftBoundaryXPosition, - halfBarHeightInPixels)
-    lowerLeftCorner = (leftBoundaryXPosition, halfBarHeightInPixels)
-    upperRightCorner = (rightBoundaryXPosition, halfBarHeightInPixels)
-    lowerRightCorner = (rightBoundaryXPosition, - halfBarHeightInPixels)
+    progressInPixels = runningTime * pixelsPerSecond
+    flipYPosition = -1
+    leaveXPosition = 1
+
+-- | draw a rectangle which...
+-- ... spans the entire y-dimenstion of the bar
+-- ... has its left border at the center of the screen
+-- ... has its width defined by the single parameter
+fillingRectangle :: Float -> Picture
+fillingRectangle width = polygon [upperLeftCorner, lowerLeftCorner, upperRightCorner, lowerRightCorner]
+  where
+    upperLeftCorner = (0, - halfBarHeightInPixels)
+    lowerLeftCorner = (0, halfBarHeightInPixels)
+    upperRightCorner = (width, halfBarHeightInPixels)
+    lowerRightCorner = (width, - halfBarHeightInPixels)
 
 pixelsPerSecond :: Float
 pixelsPerSecond = halfMonitorWidthInPixels / countdownLengthInSeconds
