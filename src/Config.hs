@@ -51,21 +51,17 @@ windowTitle = "countdown"
 windowSize :: (Int, Int)
 windowSize = (1912, 5)
 
-
-{- |  The default position of the application window. The actual window position will depend on the configuration
-      of your window manager / compositor.
--}
+-- |  The default position of the application window. The actual window position will depend on the configuration
+--      of your window manager / compositor.
 windowPosition :: (Int, Int)
 windowPosition = (0, 0)
 
-{- |  Measures the vertical dimensions of the bar to be drawn in pixels. This should exceed the corresponding window
-      dimension and will be derived from those in later versions.
--}
+-- |  Measures the vertical dimensions of the bar to be drawn in pixels. This should exceed the corresponding window
+--      dimension and will be derived from those in later versions.
 halfBarHeightInPixels :: Float
 halfBarHeightInPixels = 3
 
-{- |  Measures the horizontal dimensions of the bar to be drawn in pixels. This should exceed the corresponding window
-      dimension and will be derived from those in later versions.
--}
+-- |  Measures the horizontal dimensions of the bar to be drawn in pixels. This should exceed the corresponding window
+--      dimension and will be derived from those in later versions.
 halfMonitorWidthInPixels :: Float
 halfMonitorWidthInPixels = 960

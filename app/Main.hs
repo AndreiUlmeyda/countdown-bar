@@ -3,10 +3,10 @@ module Main where
 import Config
   ( backgroundColor,
     barColor,
+    countdownLengthInSeconds,
     frameRate,
     halfBarHeightInPixels,
     halfMonitorWidthInPixels,
-    countdownLengthInSeconds,
     windowPosition,
     windowSize,
     windowTitle,
@@ -28,8 +28,8 @@ render :: RunningTime -> Picture
 render runningTime = color barColor $ polygon [upperLeftCorner, lowerLeftCorner, upperRightCorner, lowerRightCorner]
   where
     progressInPixels = runningTime * pixelsPerSecond
-    leftBoundaryXPosition = min 0 (- halfMonitorWidthInPixels + progressInPixels)
     rightBoundaryXPosition = max 0 (halfMonitorWidthInPixels - progressInPixels)
+    leftBoundaryXPosition = - rightBoundaryXPosition
     upperLeftCorner = (leftBoundaryXPosition, - halfBarHeightInPixels)
     lowerLeftCorner = (leftBoundaryXPosition, halfBarHeightInPixels)
     upperRightCorner = (rightBoundaryXPosition, halfBarHeightInPixels)
