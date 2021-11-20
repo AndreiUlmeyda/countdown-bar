@@ -25,7 +25,7 @@ type RunningTime = Float
 type TimeDelta = Float
 
 -- | render a bar ticking down towards the middle by defining the right half of the bar depending on
--- the running time, then defining a second half by mirroring about the y-axis
+-- the running time, then mirroring it
 render :: RunningTime -> Picture
 render runningTime = Pictures [rightHalfBar, leftHalfBar]
   where
@@ -36,17 +36,19 @@ render runningTime = Pictures [rightHalfBar, leftHalfBar]
     flipYPosition = -1
     leaveXPosition = 1
 
--- | draw a rectangle which...
+-- | draw a rectangle which
 -- ... spans the entire y-dimenstion of the bar
--- ... has its left border at the center of the screen
+-- ... has its left border at the center of the screen, which is the coordinate system origin as defined by the graphics package, gloss
 -- ... has its width defined by the single parameter
 fillingRectangle :: Float -> Picture
 fillingRectangle width = polygon [upperLeftCorner, lowerLeftCorner, upperRightCorner, lowerRightCorner]
   where
-    upperLeftCorner = (0, - halfBarHeightInPixels)
-    lowerLeftCorner = (0, halfBarHeightInPixels)
-    upperRightCorner = (width, halfBarHeightInPixels)
-    lowerRightCorner = (width, - halfBarHeightInPixels)
+    upperLeftCorner = (leftBorderXPosition, - halfBarHeightInPixels)
+    lowerLeftCorner = (leftBorderXPosition, halfBarHeightInPixels)
+    upperRightCorner = (rightBorderxPosition, halfBarHeightInPixels)
+    lowerRightCorner = (rightBorderxPosition, - halfBarHeightInPixels)
+    leftBorderXPosition = 0
+    rightBorderxPosition = width
 
 pixelsPerSecond :: Float
 pixelsPerSecond = halfMonitorWidthInPixels / countdownLengthInSeconds
