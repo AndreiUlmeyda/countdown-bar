@@ -3,10 +3,10 @@ module Main where
 import Config
   ( backgroundColor,
     barColor,
+    barHeightInPixels,
     countdownLengthInSeconds,
     frameRate,
-    halfBarHeightInPixels,
-    initialBarWidth,
+    initialBarWidthInPixels,
     windowPosition,
     windowSize,
     windowTitle,
@@ -25,12 +25,13 @@ type RunningTime = Float
 type TimeDelta = Float
 
 -- | render a bar ticking down towards the middle by drawing a full width rectangle, then
--- scaling it down as time goes by
+-- scaling it down as time goes by, gloss' rectangleSolid function already draws centered on the screen
+-- so no additional positioning is needed
 render :: RunningTime -> Picture
-render runningTime = Pictures [rightHalfBar] --Pictures [rightHalfBar, leftHalfBar]
+render runningTimeInSeconds = color barColor $ scale tickDownAlongYDimension leaveXDimensionUnchanged $ rectangleSolid initialBarWidthInPixels barHeightInPixels
   where
-    rightHalfBar = color barColor $ scale yScale 1 $ rectangleSolid initialBarWidth halfBarHeightInPixels --fillingRectangle rightBoundaryXPosition
-    yScale = max 0 $ (countdownLengthInSeconds - runningTime) / countdownLengthInSeconds
+    tickDownAlongYDimension = max 0 $ (countdownLengthInSeconds - runningTimeInSeconds) / countdownLengthInSeconds :: Float
+    leaveXDimensionUnchanged = 1 :: Float
 
 handleInputEvents :: Event -> RunningTime -> RunningTime
 handleInputEvents _ runningTime = runningTime -- ignore all events

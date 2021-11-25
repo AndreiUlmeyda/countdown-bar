@@ -7,8 +7,8 @@ module Config
     windowTitle,
     windowSize,
     windowPosition,
-    initialBarWidth,
-    halfBarHeightInPixels,
+    initialBarWidthInPixels,
+    barHeightInPixels,
   )
 where
 
@@ -49,7 +49,7 @@ windowTitle = "countdown"
 
 -- | The size of the application window.
 windowSize :: (Int, Int)
-windowSize = (1912, 5)
+windowSize = (1910, 5)
 
 -- |  The default position of the application window. The actual window position will depend on the configuration
 --      of your window manager / compositor.
@@ -58,10 +58,10 @@ windowPosition = (0, 0)
 
 -- |  Measures the vertical dimensions of the bar to be drawn in pixels. This should exceed the corresponding window
 --      dimension and will be derived from those in later versions.
-halfBarHeightInPixels :: Float
-halfBarHeightInPixels = 6
+barHeightInPixels :: Float
+barHeightInPixels = (fromIntegral . snd) windowSize
 
 -- |  Measures the horizontal dimensions of the bar to be drawn in pixels. This should exceed the corresponding window
 --      dimension and will be derived from those in later versions.
-initialBarWidth :: Float
-initialBarWidth = 1900
+initialBarWidthInPixels :: Float
+initialBarWidthInPixels = (fromIntegral . fst) windowSize
