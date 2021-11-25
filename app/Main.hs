@@ -6,12 +6,12 @@ import Config
     countdownLengthInSeconds,
     frameRate,
     halfBarHeightInPixels,
-    halfMonitorWidthInPixels,
+    initialBarWidth,
     windowPosition,
     windowSize,
     windowTitle,
   )
-import Graphics.Gloss.Data.Picture (Picture (Pictures), color, polygon, scale)
+import Graphics.Gloss.Data.Picture (Picture (Pictures), color, polygon, rectangleSolid, scale, translate)
 import Graphics.Gloss.Interface.Pure.Game (Display (InWindow), Event, play)
 
 main :: IO ()
@@ -24,34 +24,13 @@ type RunningTime = Float
 
 type TimeDelta = Float
 
--- | render a bar ticking down towards the middle by defining the right half of the bar depending on
--- the running time, then mirroring it
+-- | render a bar ticking down towards the middle by drawing a full width rectangle, then
+-- scaling it down as time goes by
 render :: RunningTime -> Picture
-render runningTime = Pictures [rightHalfBar, leftHalfBar]
+render runningTime = Pictures [rightHalfBar] --Pictures [rightHalfBar, leftHalfBar]
   where
-    rightHalfBar = color barColor $ fillingRectangle rightBoundaryXPosition
-    leftHalfBar = scale flipYPosition leaveXPosition rightHalfBar
-    rightBoundaryXPosition = max 0 (halfMonitorWidthInPixels - progressInPixels)
-    progressInPixels = runningTime * pixelsPerSecond
-    flipYPosition = -1
-    leaveXPosition = 1
-
--- | draw a rectangle which
--- ... spans the entire y-dimenstion of the bar
--- ... has its left border at the center of the screen, which is the coordinate system origin as defined by the graphics package, gloss
--- ... has its width defined by the single parameter
-fillingRectangle :: Float -> Picture
-fillingRectangle width = polygon [upperLeftCorner, lowerLeftCorner, upperRightCorner, lowerRightCorner]
-  where
-    upperLeftCorner = (leftBorderXPosition, - halfBarHeightInPixels)
-    lowerLeftCorner = (leftBorderXPosition, halfBarHeightInPixels)
-    upperRightCorner = (rightBorderxPosition, halfBarHeightInPixels)
-    lowerRightCorner = (rightBorderxPosition, - halfBarHeightInPixels)
-    leftBorderXPosition = 0
-    rightBorderxPosition = width
-
-pixelsPerSecond :: Float
-pixelsPerSecond = halfMonitorWidthInPixels / countdownLengthInSeconds
+    rightHalfBar = color barColor $ scale yScale 1 $ rectangleSolid initialBarWidth halfBarHeightInPixels --fillingRectangle rightBoundaryXPosition
+    yScale = max 0 $ (countdownLengthInSeconds - runningTime) / countdownLengthInSeconds
 
 handleInputEvents :: Event -> RunningTime -> RunningTime
 handleInputEvents _ runningTime = runningTime -- ignore all events

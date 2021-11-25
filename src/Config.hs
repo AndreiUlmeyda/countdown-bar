@@ -7,7 +7,7 @@ module Config
     windowTitle,
     windowSize,
     windowPosition,
-    halfMonitorWidthInPixels,
+    initialBarWidth,
     halfBarHeightInPixels,
   )
 where
@@ -59,9 +59,9 @@ windowPosition = (0, 0)
 -- |  Measures the vertical dimensions of the bar to be drawn in pixels. This should exceed the corresponding window
 --      dimension and will be derived from those in later versions.
 halfBarHeightInPixels :: Float
-halfBarHeightInPixels = 3
+halfBarHeightInPixels = 6
 
 -- |  Measures the horizontal dimensions of the bar to be drawn in pixels. This should exceed the corresponding window
 --      dimension and will be derived from those in later versions.
-halfMonitorWidthInPixels :: Float
-halfMonitorWidthInPixels = 960
+initialBarWidth :: Float
+initialBarWidth = 1900
