@@ -25,8 +25,8 @@ type RunningTime = Float
 type TimeDelta = Float
 
 -- | render a bar ticking down towards the middle by drawing a full width rectangle, then
--- scaling it down as time goes by, gloss' rectangleSolid function already draws centered on the screen
--- so no additional positioning is needed
+-- scaling it down in the y-direction as time goes by. Gloss' rectangleSolid function already
+-- draws centered on the window, so no additional positioning is needed.
 render :: RunningTime -> Picture
 render runningTimeInSeconds = color barColor $ scale tickDownAlongYDimension leaveXDimensionUnchanged $ rectangleSolid initialBarWidthInPixels barHeightInPixels
   where
