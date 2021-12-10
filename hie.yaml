@@ -6,5 +6,5 @@ cradle:
           stack:
             - path: "./app/Main.hs"
             - path: "./test/Spec.hs"
-            - path: "./src/Logic.hs"
             - path: "./src/Config.hs"
+            - path: "./src/CommandLineFeatures.hs"

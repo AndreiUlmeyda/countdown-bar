@@ -1,5 +1,6 @@
 module Main where
 
+import CommandLineFeatures (a)
 import Config
   ( backgroundColor,
     barColor,
