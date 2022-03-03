@@ -13,6 +13,7 @@ module Config
 where
 
 import Graphics.Gloss.Data.Color (Color, makeColor)
+import Prelude
 
 -- | Defines the number of frames to render per second
 frameRate :: Int
