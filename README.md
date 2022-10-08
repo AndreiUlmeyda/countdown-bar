@@ -1,3 +1,5 @@
+![example workflow](https://github.com/AndreiUlmeyda/countdown-bar/actions/workflows/ci.yml/badge.svg)
+
 # countdown-bar
 Spawns a rectangular window where a colored bar ticks down towards the middle of the screen over 25 minutes.
 See the orange bar slowly ticking down giving way to a green background:
