@@ -22,7 +22,7 @@ jobs:
       - name: Chechout repo
         uses: actions/checkout@v3
       - name: Install OpenGL dependencies
-        run: sudo apt install --assume-yes libglvnd-dev freeglut3
+        run: sudo apt install --assume-yes libglvnd-dev freeglut3-dev
       - name: Cache dependencies (Unix)
         uses: actions/cache@v1
         with:
