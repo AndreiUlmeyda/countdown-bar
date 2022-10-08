@@ -21,6 +21,8 @@ jobs:
     steps:
       - name: Chechout repo
         uses: actions/checkout@v3
+      - name: Install OpenGLRaw dependencies
+        run: apt install --assume-yes libglvnd-dev
       - name: Cache dependencies (Unix)
         uses: actions/cache@v1
         with:
