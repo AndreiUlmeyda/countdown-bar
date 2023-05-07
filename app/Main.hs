@@ -11,8 +11,19 @@ import Config
     windowSize,
     windowTitle,
   )
-import Graphics.Gloss.Data.Picture (Picture (Pictures), color, polygon, rectangleSolid, scale, translate)
-import Graphics.Gloss.Interface.Pure.Game (Display (InWindow), Event, play)
+import Graphics.Gloss.Data.Picture
+  ( Picture (Pictures),
+    color,
+    polygon,
+    rectangleSolid,
+    scale,
+    translate,
+  )
+import Graphics.Gloss.Interface.Pure.Game
+  ( Display (InWindow),
+    Event,
+    play,
+  )
 
 main :: IO ()
 main = play windowSpecs backgroundColor frameRate initialRunningTime render handleInputEvents updateRunningTimeOrExit
