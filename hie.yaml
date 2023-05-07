@@ -1,10 +1,13 @@
 cradle:
-  multi:
-    - path: "./"
-      config:
-        cradle:
-          stack:
-            - path: "./app/Main.hs"
-            - path: "./test/Spec.hs"
-            - path: "./src/Logic.hs"
-            - path: "./src/Config.hs"
+  stack:
+    - path: "./src"
+      component: "countdown-bar:lib"
+
+    - path: "./app/Main.hs"
+      component: "countdown-bar:exe:countdown-bar"
+
+    - path: "./app/Paths_countdown_bar.hs"
+      component: "countdown-bar:exe:countdown-bar"
+
+    - path: "./test"
+      component: "countdown-bar:test:countdown-bar-test"
